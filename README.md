@@ -47,3 +47,5 @@
 
 9. **PyCharm 등에서 Node.js Interpreter 설정:**
     PyCharm에서 프로젝트를 열어서 Settings 또는 Preferences로 이동하여, Project: your_project_name -> Python Interpreter에서 `Node.js`의 경로를 추가해줍니다.
+
+10. **만일 8080 포트를 기존에 사용하고 있다면 검색 후 제거**
