@@ -26,7 +26,7 @@
 5. **Node.js 환경변수 추가:**
     시스템 환경변수에서 `C:\Program Files\nodejs\` 경로를 `PATH`에 추가합니다.
 
-다른 CMD 창을 열고 
+>> 다른 CMD 창을 열고 
 
 6. **npm 패키지 설치 및 빌드:**
     ```bash
