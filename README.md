@@ -5,7 +5,7 @@
 
 1. **프로젝트 클론:**
     ```bash
-    git clone https://github.com/MineTime23/CSE3010-EMR.git
+    git clone https://github.com/MineTime23/EMR_Project.git
     ```
 
 2. **가상 환경 만들기 및 활성화:**
