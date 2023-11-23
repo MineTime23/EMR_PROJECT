@@ -15,5 +15,14 @@ module.exports = {
 
   pages: {
     index: 'src/main.js'
-  }
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
+  },
+
 }
