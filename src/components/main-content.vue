@@ -26,6 +26,9 @@
               </tr>
             </table>
           </div>
+          <div>
+            <a href="javascript:void(0);" @click="openPopup('api/create_patient/')">환자 등록하기</a>
+          </div>
         </div>
 
         <div class="grid-item-2">
@@ -217,7 +220,7 @@ export default {
         "name": "배효민",
         "sex": "남",
         "birth": 891012
-      }], 
+      }],
       trtlist: [{
         "id": 23108978,
         "date": 231024,
@@ -264,16 +267,21 @@ export default {
   methods: {
     submitForm() {
       console.log('검색: ' + this.searchPatients);
-    }, 
+    },
     rowClickPat(pat) {
       alert(`환자 ID: ${pat.id}\n성함: ${pat.name}\n성별: ${pat.sex}\n생년월일: ${pat.birth}`);
     },
     rowClickTrt(trt) {
       alert(`치료 ID: ${trt.id}\n날짜: ${trt.date}\n종류: ${trt.type}\n담당직원: ${trt.manager}`);
+    },
+    openPopup(url) {
+      var popup = window.open('', '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+      popup.location.href = url;
     }
   }
 };
 </script>
+
 
 <style scoped>
 .content {
@@ -373,13 +381,13 @@ p {
 }
 
 #x {
-    position: relative;
-    border-color: white;
-    background: white;
-    color: red;
-    top: -43px;
-    right: -161px;
-    margin: 0;
+  position: relative;
+  border-color: white;
+  background: white;
+  color: red;
+  top: -43px;
+  right: -161px;
+  margin: 0;
 }
 
 #title {
@@ -505,9 +513,9 @@ p {
 }
 
 .treatdata textarea {
-    width: 100%;
-    height: 4em;
-    resize: none;
+  width: 100%;
+  height: 4em;
+  resize: none;
 }
 
 .treatdata tr {
@@ -535,9 +543,9 @@ p {
 }
 
 .writedata textarea {
-    width: 100%;
-    height: 5.4em;
-    resize: none;
+  width: 100%;
+  height: 5.4em;
+  resize: none;
 }
 
 .writedata tr {
@@ -558,6 +566,7 @@ p {
 .search-button {
   margin: 0 0 0 8px;
 }
+
 .treat-button {
   margin: 0 8px 0 8px;
   height: 32px;
