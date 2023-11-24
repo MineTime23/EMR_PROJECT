@@ -1,13 +1,25 @@
 <template>
   <aside class="sidebar" :class="{ closed: !sidebarOpen }">
     <!-- Sidebar content -->
-    <ProfileBlock :username="username" :role="role" />
+    <ProfileBlock :username="username" :role="role"/>
     <button @click="logout" class="logout-button">Logout</button>
     <ul>
-      <li style="font-size: 24px"><p style="font-size: 16px">다음 환자</p>홍길동 님<p style="font-size: 16px">(23112345)</p></li>
+      <li style="font-size: 24px"><p style="font-size: 16px">다음 환자</p>홍길동 님<p style="font-size: 16px">(23112345)</p>
+      </li>
       <li style="font-size: 18px">최길동 님<p style="font-size: 16px">(23112346)</p></li>
       <li style="font-size: 18px">정길동 님<p style="font-size: 16px">(23112347)</p></li>
     </ul>
+    <div style="width: 150px;">
+      <a href="javascript:void(0);" @click="openPopup('api/create_patient/')"
+         style="background-color: #CCCCCC; color: white; padding: 5px 20px; text-decoration: none; display: inline-block; border-radius: 8px;">환자
+        추가하기</a>
+    </div>
+    <div style="width: 300px;">
+      <a href="javascript:void(0);" @click="openPopup('api2/create_TestRecords/')"
+         style="background-color: #CCCCCC; color: white; padding: 5px 20px; text-decoration: none; display: inline-block; border-radius: 8px;">검사 데이터
+        추가하기</a>
+    </div>
+
   </aside>
 </template>
 
@@ -16,11 +28,11 @@ import ProfileBlock from "./profile-section.vue";
 
 export default {
   components: {
-      ProfileBlock,
+    ProfileBlock,
   },
   data() {
     return {
-      sidebarOpen: true, 
+      sidebarOpen: true,
       username: "박유상",
       role: "물리치료사",
     };
@@ -32,7 +44,12 @@ export default {
     logout() {
       // logout methods
     },
+    openPopup(url) {
+      var popup = window.open('', '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+      popup.location.href = url;
+    }
   },
+
 };
 </script>
 
