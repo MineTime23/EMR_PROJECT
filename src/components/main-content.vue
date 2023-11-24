@@ -26,9 +26,6 @@
               </tr>
             </table>
           </div>
-          <div>
-            <a href="javascript:void(0);" @click="openPopup('api/create_patient/')">환자 등록하기</a>
-          </div>
         </div>
 
         <div class="grid-item-2">
@@ -75,9 +72,8 @@
             </table>
           </div>
           <div style="margin: 24px 0 0 0;">
-            <button @click="search" class="treat-button">검사 데이터 분석</button>
-            <button @click="search" class="treat-button">치료 추가</button>
-            <button @click="search" class="treat-button">운동 추가</button>
+            <button @click="search" class="treat-button">검사 데이터 보기</button>
+            <button @click="search" class="treat-button">매체 데이터 보기</button>
           </div>
         </div>
       </div>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "patient_info_api",
+    "TestRecords_api",
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
