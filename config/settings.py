@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "Prescription_api",
     "DiagnosticRecords_api",
     "TreatmentRecords_api",
+    "ExerciseRecords_api",
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
