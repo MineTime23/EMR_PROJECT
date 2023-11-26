@@ -2,33 +2,8 @@
   <main class="content">
     <div class="grid-frame">
       <div class="grid-container">
-        <div class="grid-item-1">
-          <p id="title">환자 검색</p>
-          <div id="space">
-            <input type="text" v-model="searchPatients" placeholder="날짜로 검색">
-            <button @click="search" class="search-button">검색</button>
-          </div>
-          <table class="patient-list" style="margin: 16px 0 0 0">
-            <tr>
-              <th width="96px">환자ID</th>
-              <th width="64px">성함</th>
-              <th width="40px">성별</th>
-              <th>생년월일</th>
-            </tr>
-          </table>
-          <div class="patient-list-div" style="margin: 0">
-            <table id="patlist" class="patient-list">
-              <tr v-for="pat in patlist" :key="pat.id" @click="rowClickPat(pat)">
-                <td width="96px">{{ pat.id }}</td>
-                <td width="64px">{{ pat.name }}</td>
-                <td width="40px">{{ pat.sex }}</td>
-                <td>{{ pat.birth }}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
 
-        <div class="grid-item-2">
+        <div class="grid-item-1">
           <p id="title">환자 정보</p>
           <div id="space">
             <p style="font-size: 20px; text-align: left"><strong>홍길동</strong></p>
@@ -74,6 +49,31 @@
           <div style="margin: 24px 0 0 0;">
             <button @click="search" class="treat-button">검사 데이터 보기</button>
             <button @click="search" class="treat-button">매체 데이터 보기</button>
+          </div>
+        </div>
+        <div class="grid-item-2">
+          <p id="title">환자 검색</p>
+          <div id="space">
+            <input type="text" v-model="searchPatients" placeholder="날짜로 검색">
+            <button @click="search" class="search-button">검색</button>
+          </div>
+          <table class="patient-list" style="margin: 16px 0 0 0">
+            <tr>
+              <th width="96px">환자ID</th>
+              <th width="64px">성함</th>
+              <th width="40px">성별</th>
+              <th>생년월일</th>
+            </tr>
+          </table>
+          <div class="patient-list-div" style="margin: 0">
+            <table id="patlist" class="patient-list">
+              <tr v-for="pat in patlist" :key="pat.id" @click="rowClickPat(pat)">
+                <td width="96px">{{ pat.id }}</td>
+                <td width="64px">{{ pat.name }}</td>
+                <td width="40px">{{ pat.sex }}</td>
+                <td>{{ pat.birth }}</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
@@ -302,17 +302,17 @@ export default {
   visibility: hidden;
 }
 
-.grid-item-1 {
+.grid-item-2 {
   background: #fff;
   padding: 24px;
   border: 1px solid #ddd;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
-  height: 180px;
+  height: 250px;
 }
 
-.grid-item-2 {
+.grid-item-1 {
   background: #fff;
   padding: 24px;
   border: 1px solid #ddd;
