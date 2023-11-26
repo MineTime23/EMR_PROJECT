@@ -25,5 +25,6 @@ urlpatterns = [
     path('api3/', include('DiagnosticRecords_api.urls'), name='api3'),
     path('api4/', include('Prescription_api.urls'), name='api4'),
     path('api5/', include('TreatmentRecords_api.urls'), name='api5'),
+    path('api6/', include('ExerciseRecords_api.urls'), name='api6'),
     # path('', views.index(), name='home'),
 ]
