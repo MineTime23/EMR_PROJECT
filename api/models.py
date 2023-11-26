@@ -105,17 +105,30 @@ class TestRecords(models.Model):
 
 # 매체데이터
 class MediaRecords(models.Model):
+    MEDIA_TYPES = [
+        ('XRAY', 'X-Ray'),
+        ('VIDEO', 'Video'),
+        ('INBODY', 'InBody'),
+        ('OTHER', 'Other'),
+    ]
+
     data_code = models.AutoField(primary_key=True)  # 미디어 코드
     patient = models.ForeignKey(Patient, on_delete=models.DO_NOTHING, null=True, blank=True)  # 환자
-    TestRecords.test_code = models.ForeignKey(TestRecords, on_delete=models.DO_NOTHING, related_name='media', null=True,
-                                              blank=True)  # 테스트 레코드
-    inbody_url = models.CharField(max_length=255, null=True, blank=True)  # 인바디 URL
-    video_url = models.CharField(max_length=255, null=True, blank=True)  # 비디오 URL
-    xray_url = models.CharField(max_length=255, null=True, blank=True)  # X레이 URL
-    Field4 = models.CharField(max_length=255, null=True, blank=True)  # 필드4
+    test_code = models.ForeignKey(TestRecords, on_delete=models.DO_NOTHING, related_name='media', null=True, blank=True)  # 테스트 레코드
+    field4 = models.CharField(max_length=255, null=True, blank=True)  # 필드4
 
     def __str__(self):
-        return f" 매체 자료 "
+        media_type = None
+        if self.xray_url:
+            media_type = 'X-Ray'
+        elif self.video_url:
+            media_type = 'Video'
+        elif self.inbody_url:
+            media_type = 'InBody'
+        else:
+            media_type = 'Other'
+
+        return f"Media Record - Date: {self.date}, Patient: {self.patient.patient_number}, Type: {media_type}"
 
 # 진단데이터
 class DiagnosticRecords(models.Model):
@@ -126,7 +139,6 @@ class DiagnosticRecords(models.Model):
     symptoms = models.CharField(max_length=55, null=True, blank=True)  # 증상
     diagnosis = models.CharField(max_length=55, null=True, blank=True)  # 진단
     comments = models.CharField(max_length=55, null=True, blank=True)  # 코멘트
-    prescription_code = models.CharField(max_length=15, null=True, blank=True)  # 처방 코드
 
     def __str__(self):
         return f"진료 기록"

@@ -9,14 +9,14 @@
       <li style="font-size: 18px">최길동 님<p style="font-size: 16px">(23112346)</p></li>
       <li style="font-size: 18px">정길동 님<p style="font-size: 16px">(23112347)</p></li>
     </ul>
-    <div style="width: 150px;">
+    <div style="width: 150px; margin-bottom: 10px;">
       <a href="javascript:void(0);" @click="openPopup('api/create_patient/')"
-         style="background-color: #CCCCCC; color: white; padding: 5px 20px; text-decoration: none; display: inline-block; border-radius: 8px;">환자
+         style="background-color: #9DAED0; color: white; padding: 5px 20px; text-decoration: none; display: inline-block; border-radius: 8px;">환자
         추가하기</a>
     </div>
     <div style="width: 300px;">
       <a href="javascript:void(0);" @click="openPopup('api2/create_TestRecords/')"
-         style="background-color: #CCCCCC; color: white; padding: 5px 20px; text-decoration: none; display: inline-block; border-radius: 8px;">검사 데이터
+         style="background-color: #9DAED0; color: white; padding: 5px 20px; text-decoration: none; display: inline-block; border-radius: 8px;">검사 데이터
         추가하기</a>
     </div>
 
