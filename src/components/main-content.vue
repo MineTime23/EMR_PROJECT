@@ -133,37 +133,63 @@
         </div>
       </div>
       <div class="grid-container">
-        <div class="grid-item-6">
-          <p id="title2">AI 진단</p>
-        </div>
         <div class="grid-item-7">
-          <p id="title2">진료 데이터 작성</p>
+          <p id="title2">작성</p>
+          <button class="section-button"
+                      @click="toggleSection('diagnosis', 'http://localhost:8000/api3/create_diagnosis/')">진료 데이터
+              </button>
+              <button class="section-button"
+                      @click="toggleSection('prescription', 'http://localhost:8000/api4/create_prescription/')">처방 데이터
+              </button>
+              <button class="section-button"
+                      @click="toggleSection('exercise', 'http://localhost:8000/api6/create_exercise/')">운동 데이터
+              </button>
+              <button class="section-button"
+                      @click="toggleSection('treatment', 'http://localhost:8000/api5/create_treatment/')">치료 데이터
+              </button>
           <div class="writedata-div">
-            <table class="writedata">
-              <tr>
-                <th>일자</th>
-                <td>2023년 10월 30일</td>
-              </tr>
-              <tr>
-                <th>담당</th>
-                <td>박유상</td>
-              </tr>
-              <tr>
-                <th>증상</th>
-                <td><textarea></textarea></td>
-              </tr>
-              <tr>
-                <th>진단</th>
-                <td><textarea></textarea></td>
-              </tr>
-              <tr>
-                <th>특이<br>사항</th>
-                <td><textarea></textarea></td>
-              </tr>
-            </table>
-          </div>
-          <div>
-            <button @click="search" class="write-button">저장</button>
+            <template>
+              <!-- Your existing HTML template goes here -->
+              <div id="diagnosis-section" class="section-form">
+                <h2>진료 데이터 입력 폼</h2>
+                <form>
+                  <label for="diagnosis-input">진료 내용:</label>
+                  <input type="text" id="diagnosis-input" name="diagnosis-input">
+                </form>
+                <button class="save-button" @click="saveData('diagnosis')">저장</button>
+              </div>
+
+              <div id="prescription-section" class="section-form">
+                <h2>처방 데이터 입력 폼</h2>
+                <form>
+                  <label for="prescription-input">처방 내용:</label>
+                  <input type="text" id="prescription-input" name="prescription-input">
+                </form>
+                <button class="save-button" @click="saveData('prescription')">저장</button>
+              </div>
+
+              <div id="exercise-section" class="section-form">
+                <h2>운동 데이터 입력 폼</h2>
+                <form>
+                  <label for="exercise-input">운동 내용:</label>
+                  <input type="text" id="exercise-input" name="exercise-input">
+                </form>
+                <button class="save-button" @click="saveData('exercise')">저장</button>
+              </div>
+
+              <div id="treatment-section" class="section-form">
+                <h2>치료 데이터 입력 폼</h2>
+                <form>
+                  <label for="treatment-input">치료 내용:</label>
+                  <input type="text" id="treatment-input" name="treatment-input">
+                </form>
+                <button class="save-button" @click="saveData('treatment')">저장</button>
+              </div>
+              <div class="grid-item-6">
+                <p id="title2">AI 진단</p>
+              </div>
+
+            </template>
           </div>
         </div>
       </div>
@@ -177,41 +203,6 @@ export default {
     return {
       trtcont: false,
       patlist: [{
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
-        "id": 23051116,
-        "name": "배효민",
-        "sex": "남",
-        "birth": 891012
-      }, {
         "id": 23051116,
         "name": "배효민",
         "sex": "남",
@@ -273,6 +264,29 @@ export default {
     openPopup(url) {
       var popup = window.open('', '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
       popup.location.href = url;
+    },
+
+    async toggleSection(section, apiUrl) {
+      const sections = document.querySelectorAll('.section-form');
+      sections.forEach((sec) => {
+        sec.style.display = 'none';
+      });
+
+      const selectedSection = document.getElementById(`${section}-section`);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+        document.querySelector('.save-button').style.display = 'block';
+
+        // API 호출
+        const response = await fetch(apiUrl);
+        const data = await response.text();
+        selectedSection.innerHTML = data;
+      }
+    },
+
+    saveData(section) {
+      const inputData = document.getElementById(`${section}-input`).value;
+      alert(`저장되었습니다: ${inputData}`);
     }
   }
 };
@@ -353,23 +367,28 @@ export default {
 }
 
 .grid-item-6 {
+  position: absolute;
+  top: 83%; /* 1/3 position */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
   background: #333540;
   padding: 24px;
   border: 1px solid #ddd;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 448px;
+  width: 400px;
   height: 180px;
 }
 
 .grid-item-7 {
+  position: relative;
   background: #fff;
   padding: 24px;
   border: 1px solid #ddd;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 448px;
-  height: 400px;
+  height: 700px;
 }
 
 p {
@@ -531,7 +550,11 @@ p {
 
 .writedata-div {
   align-items: center;
+  background-color: #f5f5f5; /* 옅은 회색 배경색 */
+  /* 다른 스타일 속성들을 필요에 따라 추가할 수 있습니다 */
+  padding: 10px;
 }
+
 
 .writedata {
   border-collapse: collapse;
@@ -576,6 +599,33 @@ p {
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #e0e0e0;
+}
+
+.section-button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.section-form {
+  display: none;
+  padding: 15px; /* Adjust padding as needed */
+  margin-bottom: 20px; /* Add margin between sections */
+}
+
+.save-button {
+  display: none;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 </style>
